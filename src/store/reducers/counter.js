@@ -1,42 +1,34 @@
+import * as actionTypes from '../actions';
+
 const initialState = {
-  counter: 0,
-  results: []
+  counter: 0
 }
 
 const reducer = (state = initialState, action) => {
-  if (action.type === 'INCREMENT') {
+  if (action.type === actionTypes.INCREMENT) {
     const newState = Object.assign({}, state);
     newState.counter = state.counter + 1;
     return newState;
   }
-  if (action.type === 'DECREMENT') {
+  if (action.type === actionTypes.DECREMENT) {
     return {
       ...state,
       counter: state.counter - 1
     };
   }
-  if (action.type === 'ADD') {
+  if (action.type === actionTypes.ADD) {
     return {
       ...state,
       counter: state.counter + action.value
     };
   }
-  if (action.type === 'SUBSTRACT') {
+  if (action.type === actionTypes.SUBSTRACT) {
     return {
       ...state,
       counter: state.counter - action.payload.value
     };
   }
-  if (action.type === 'STORE_RESULT') {
-    return {
-      ...state,
-      results: state.results.concat({id: new Date(), value: state.counter})      
-    }
-  }
-  if (action.type === 'DELETE_RESULT') {
-
-  }
-
+ 
   return state;
 }
 
